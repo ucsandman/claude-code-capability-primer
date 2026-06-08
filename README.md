@@ -2,6 +2,16 @@
 
 A self-awareness layer for **Claude Code**. It makes sure that, at the start of every session, Claude is reminded of the built-in capabilities it can reach for — and gives it on-demand deep-dive skills for each one — without bloating every session with full documentation.
 
+```bash
+claude plugin marketplace add ucsandman/claude-code-capability-primer
+claude plugin install claude-code-capability-primer@capability-primer
+```
+
+<!-- DEMO: add a short GIF at docs/demo.gif and uncomment the line below.
+     A fresh session showing the card inject + Claude reaching for a workflow
+     or subagent it would otherwise have skipped sells this better than any prose. -->
+<!-- ![capability-primer demo](docs/demo.gif) -->
+
 ## Why
 
 Claude Code can do far more than single-agent inline edits: skills, subagents, dynamic workflows, hooks, background tasks, checkpointing, MCP, plugins, GitHub Actions, the Agent SDK, and effort/model controls. The failure mode is *forgetting they exist* and single-threading work that should fan out, or declaring something "not possible" before checking. This plugin closes that gap.
