@@ -1,0 +1,4 @@
+# Keep line endings LF everywhere. The hook + update scripts run under bash
+# (Git Bash on Windows, sh on Linux/macOS) and break if checked out with CRLF.
+* text=auto eol=lf
+*.sh text eol=lf
