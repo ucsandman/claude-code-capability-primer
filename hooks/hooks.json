@@ -12,6 +12,17 @@
             "statusMessage": "Loading Claude Code capability card..."
           }
         ]
+      },
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/auto-update.sh\"",
+            "async": true,
+            "timeout": 30
+          }
+        ]
       }
     ]
   }

@@ -28,6 +28,15 @@ escape_for_json() {
   printf '%s' "$s"
 }
 
+# Append a staleness note if the async updater (auto-update.sh) flagged that the
+# installed Claude Code is newer than the version this primer was generated for.
+STALE_FLAG="${PLUGIN_ROOT}/skills/claude-code-capabilities/references/cache/.staleness"
+if [ -f "$STALE_FLAG" ]; then
+  card_content="${card_content}
+
+$(cat "$STALE_FLAG" 2>/dev/null)"
+fi
+
 # Escape the card FIRST, then assemble the JSON string value using literal \n
 # for the wrapper newlines (already valid JSON escapes). Do not re-escape.
 card_escaped=$(escape_for_json "$card_content")

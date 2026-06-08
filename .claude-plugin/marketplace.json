@@ -11,7 +11,7 @@
       "name": "claude-code-capability-primer",
       "source": "./",
       "description": "Injects a tiny capability card at session start and exposes deep-dive skills so Claude knows and uses its built-in Claude Code capabilities.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "ucsandman"
       },

@@ -73,6 +73,16 @@ bash scripts/update-docs.sh
 
 Re-summarizing the prose deep-dives from the refreshed cache is a model task — ask a Claude session to update the affected `claude-code-*` skills from `references/cache/`.
 
+## Staying current (auto-update)
+
+The primer keeps itself fresh so you don't have to:
+
+1. **Local auto-pull** — an async SessionStart hook (`hooks/auto-update.sh`) runs a throttled `git pull --ff-only` so your install tracks merged `main`, and adds a one-line staleness note to the card when your Claude Code is newer than the version the content was generated for.
+2. **Refresh runbook** (`skills/claude-code-capabilities/references/refresh-runbook.md`) — the verified procedure for turning new Claude Code docs/changelog into an updated card, map, and `claude-code-*` skills.
+3. **Scheduled refresh** — a monthly remote routine runs the runbook, **fact-checks every change against the live docs**, opens a PR, and auto-merges only when verification + `claude plugin validate . --strict` pass (`AUTO_MERGE_POLICY = verified`). Set the policy to `always` for blind merge, or `never` to always review.
+
+The scheduled routine needs your GitHub connected to claude.ai (run `/web-setup` once). The default never publishes unverified content — stale-but-correct beats fresh-but-wrong.
+
 ## Develop locally
 
 ```bash

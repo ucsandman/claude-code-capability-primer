@@ -1,6 +1,6 @@
 {
   "name": "claude-code-capability-primer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Self-awareness layer for Claude Code: injects a tiny capability card at session start and exposes deep-dive skills so Claude reliably knows and uses its built-in capabilities — skills, subagents, dynamic workflows, hooks, background tasks, checkpointing, MCP, plugins, GitHub Actions, the Agent SDK, and effort/model controls.",
   "author": {
     "name": "ucsandman"

@@ -33,12 +33,10 @@ This skill is your **capability index**. Its job: before you plan, single-thread
 
 Each row's deep-dive skill is a separate skill in this plugin — invoke it with the `Skill` tool when you are actually doing that kind of work (they auto-surface on the matching signal too).
 
-## Keeping it current
+## Staying current (automatic)
 
-The capability docs are summaries of the official Claude Code docs and changelog. To refresh the fetched source material, run from a shell:
+This primer keeps itself current:
+- An async SessionStart hook (`hooks/auto-update.sh`) does a throttled `git pull --ff-only` so your install tracks the latest merged `main`, and flags this card when your installed Claude Code is newer than the version the content was generated for (`references/.generated-for`).
+- A scheduled refresh agent fetches the latest official docs/changelog, adds or updates the card, map, and `claude-code-*` skills for any new capabilities, **verifies every claim against the live docs**, and opens a PR — auto-merging only when verification passes (`AUTO_MERGE_POLICY = verified`; see `references/refresh-runbook.md`).
 
-```bash
-bash "<plugin-root>/scripts/update-docs.sh"
-```
-
-That regenerates `references/changelog-latest.md` and re-fetches the official doc pages into `references/cache/`. Re-summarizing the prose deep-dives from freshly fetched docs is a model task — re-run the capability-primer content workflow or ask a Claude session to update the affected `claude-code-*` skills from the cache.
+To refresh manually: run `bash scripts/update-docs.sh`, then follow `references/refresh-runbook.md` in a Claude session.
